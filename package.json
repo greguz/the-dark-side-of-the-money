@@ -16,6 +16,10 @@
   ],
   "author": "Giacomo Gregoletto",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greguz/the-dark-side-of-the-money.git"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "esm": "^3.2.25",
