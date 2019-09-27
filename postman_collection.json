@@ -1,0 +1,60 @@
+{
+  "info": {
+    "_postman_id": "75bbec5c-509e-4335-b3f2-131cf804a913",
+    "name": "the-dark-side-of-the-money",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "convert",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{host}}/convert?amount=16.44&src_currency=USD&dest_currency=JPY&reference_date=2019-09-12",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "convert"
+          ],
+          "query": [
+            {
+              "key": "amount",
+              "value": "16.44"
+            },
+            {
+              "key": "src_currency",
+              "value": "USD"
+            },
+            {
+              "key": "dest_currency",
+              "value": "JPY"
+            },
+            {
+              "key": "reference_date",
+              "value": "2019-09-12"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "468c6972-00d1-4ddb-8fbd-43e635678da5",
+      "key": "host",
+      "value": "127.0.0.1:8008",
+      "type": "string"
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

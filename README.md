@@ -16,12 +16,26 @@ Simply run `npm start`. By default the server is available at port **8008**.
 
 ## Convert
 
+There's only single web route available to convert currencies.
+
+### Route
+
+#### Endpoing
+
+```
 GET /convert
-- amount (number)
-- src_currency (ISO 3 letters)
-- dest_currency (ISO 3 letters)
-- reference_date (YYYY-MM-DD)
+```
+
+#### QueryString parameters
+- **amount** (number)
+- **src_currency** (ISO 3 letters)
+- **dest_currency** (ISO 3 letters)
+- **reference_date** (YYYY-MM-DD format)
+
+### Postman
+
+You can import the postman collection JSON file to start trying the route.
 
 ## How
 
-https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml
+The web server dynamically fetch a database containing last 90 days exchange rates from the [European Central Bank](https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml). There's a cache timeout of 1h by default for that database.
