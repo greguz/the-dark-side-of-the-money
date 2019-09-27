@@ -6,21 +6,19 @@ import errors from './plugins/errors'
 
 import api from './api'
 
-export default function createServer () {
-  const server = fastify({
+export default function createServer (options) {
+  const instance = fastify({
     ignoreTrailingSlash: true,
-    logger: {
-      level: process.env.LOG_LEVEL || 'info'
-    }
+    ...options
   })
 
-  server.register(errors)
+  instance.register(errors)
 
-  server.register(noAdditionalProperties)
+  instance.register(noAdditionalProperties)
 
-  server.register(database)
+  instance.register(database)
 
-  server.register(api)
+  instance.register(api)
 
-  return server
+  return instance
 }

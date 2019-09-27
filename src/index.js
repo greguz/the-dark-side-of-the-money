@@ -2,7 +2,11 @@ import 'make-promises-safe'
 
 import createServer from './server'
 
-const server = createServer()
+const server = createServer({
+  logger: {
+    level: process.env.LOG_LEVEL || 'info'
+  }
+})
 
 server.listen(
   process.env.SERVER_PORT || '8008',
