@@ -5,7 +5,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "eslint src",
+    "test:lint": "eslint src tests",
+    "test:unit": "ava",
+    "test": "npm run test:lint && npm run test:unit",
     "start": "node --require dotenv/config index.js",
     "watch": "nodemon --require dotenv/config --watch src --ext js --delay 2 index.js"
   },
@@ -32,6 +34,7 @@
     "pump": "^3.0.0"
   },
   "devDependencies": {
+    "ava": "^2.4.0",
     "dotenv": "^8.1.0",
     "eslint": "^6.4.0",
     "eslint-config-standard": "^14.1.0",
@@ -44,5 +47,10 @@
   },
   "engines": {
     "node": ">=8.0.0"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
   }
 }
