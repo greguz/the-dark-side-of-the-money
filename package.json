@@ -1,0 +1,43 @@
+{
+  "name": "the-dark-side-of-the-money",
+  "version": "0.1.0",
+  "description": "Grab that cash with both hands and make a stash",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint src",
+    "start": "node --require dotenv/config index.js",
+    "watch": "nodemon --require dotenv/config --watch src --ext js --delay 2 index.js"
+  },
+  "keywords": [
+    "money",
+    "pink",
+    "floyd"
+  ],
+  "author": "Giacomo Gregoletto",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "esm": "^3.2.25",
+    "fastify": "^2.8.0",
+    "fastify-no-additional-properties": "^1.0.0",
+    "fastify-plugin": "^1.6.0",
+    "htmlparser2": "^4.0.0",
+    "lodash": "^4.17.15",
+    "make-promises-safe": "^5.0.0",
+    "pump": "^3.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "eslint": "^6.4.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^1.19.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
