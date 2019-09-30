@@ -2,6 +2,9 @@ import pump from 'pump'
 import { Transform, Writable } from 'stream'
 import Ajv from 'ajv'
 
+/**
+ * Execute a streaming pipeline and return the last emitted chunk
+ */
 export function subscribe (...args) {
   return new Promise((resolve, reject) => {
     let result
@@ -18,6 +21,9 @@ export function subscribe (...args) {
   })
 }
 
+/**
+ * Like Array.reduce() but for streams
+ */
 export function reduceSync (reducer, initialValue) {
   let accumulator = initialValue
 
@@ -34,6 +40,9 @@ export function reduceSync (reducer, initialValue) {
   })
 }
 
+/**
+ * Sync wrapper of a Transform stream
+ */
 export function mapSync (mapper) {
   return new Transform({
     objectMode: true,
@@ -43,6 +52,9 @@ export function mapSync (mapper) {
   })
 }
 
+/**
+ * Validate any stream chunk against a JSON schema
+ */
 export function applySchema (schema) {
   var ajv = new Ajv()
   var validate = ajv.compile(schema)

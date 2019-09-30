@@ -61,10 +61,15 @@ export default async function fetchDatabase () {
   })
 
   return stream.subscribe(
+    // Original XML string
     request.data,
+    // XML to JSON
     new XmlParser(['gesmes:Envelope', 'Cube', 'Cube']),
+    // Validate schema against the parsed XML
     stream.applySchema(schema),
+    // Simplify data structure
     stream.mapSync(mapper),
+    // Reduce entries into a single array
     stream.reduceSync((acc, chunk) => [...acc, chunk], [])
   )
 }
