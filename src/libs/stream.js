@@ -1,25 +1,5 @@
-import pump from 'pump'
-import { Transform, Writable } from 'stream'
+import { transform } from 'fluido'
 import Ajv from 'ajv'
-
-/**
- * Execute a streaming pipeline and return the last emitted chunk
- */
-export function subscribe (...args) {
-  return new Promise((resolve, reject) => {
-    let result
-
-    const collector = new Writable({
-      objectMode: true,
-      write (chunk, _encoding, callback) {
-        result = chunk
-        callback()
-      }
-    })
-
-    pump(...args, collector, err => err ? reject(err) : resolve(result))
-  })
-}
 
 /**
  * Like Array.reduce() but for streams
@@ -27,7 +7,7 @@ export function subscribe (...args) {
 export function reduceSync (reducer, initialValue) {
   let accumulator = initialValue
 
-  return new Transform({
+  return transform({
     objectMode: true,
     transform (chunk, encoding, callback) {
       accumulator = reducer(accumulator, chunk, encoding)
@@ -44,7 +24,7 @@ export function reduceSync (reducer, initialValue) {
  * Sync wrapper of a Transform stream
  */
 export function mapSync (mapper) {
-  return new Transform({
+  return transform({
     objectMode: true,
     transform (chunk, encoding, callback) {
       callback(null, mapper(chunk, encoding))
@@ -59,7 +39,7 @@ export function applySchema (schema) {
   var ajv = new Ajv()
   var validate = ajv.compile(schema)
 
-  return new Transform({
+  return transform({
     objectMode: true,
     transform (chunk, _encoding, callback) {
       if (!validate(chunk)) {

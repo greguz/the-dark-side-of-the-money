@@ -1,5 +1,6 @@
 import axios from 'axios'
 import _ from 'lodash'
+import { subscribe } from 'fluido'
 
 import * as stream from './stream'
 import XmlParser from './xml-parser'
@@ -60,7 +61,7 @@ export default async function fetchDatabase () {
     responseType: 'stream'
   })
 
-  return stream.subscribe(
+  return subscribe(
     // Original XML string
     request.data,
     // XML to JSON
